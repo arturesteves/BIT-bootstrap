@@ -1,0 +1,43 @@
+#
+# Create a container with BIT - Bytecode Instrumentation tool
+#
+#
+
+#base image
+FROM ubuntu
+
+
+RUN apt-get update
+RUN apt-get install git -y
+RUN apt-get install vim -y
+RUN apt-get install sudo -y
+
+# needed to run the command add-apt-repository
+RUN sudo apt-get install software-properties-common -y
+# needed to be able to find openjdk-7-...
+RUN sudo add-apt-repository ppa:openjdk-r/ppa  
+RUN sudo apt-get update 
+
+# java dependencies
+RUN apt-get install openjdk-7-jre -y
+RUN apt-get install openjdk-7-jdk -y
+
+
+# copy tool to be accessible inside the container
+COPY BIT /tmp/cnv/BIT
+
+# set java configs 
+RUN /bin/bash -c "source /tmp/cnv/BIT/./java-config.sh"
+
+# create env. variables
+RUN echo "export home=/usr/src/my-app" >> ~/.bashrc
+RUN echo "export CLASSPATH=$CLASSPATH:/tmp/cnv/BIT:/tmp/cnv/BIT/samples:./" >> ~/.bashrc 
+
+# compile java files
+WORKDIR /tmp/cnv/BIT/examples
+RUN javac *.java
+WORKDIR /tmp/cnv/BIT/samples
+RUN javac -sourcepath .:/tmp/cnv/BIT *.java
+ 
+
+WORKDIR /usr/src/my-app
