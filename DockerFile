@@ -34,6 +34,9 @@ RUN echo "export home=/usr/src/my-app" >> ~/.bashrc
 RUN echo "export CLASSPATH=$CLASSPATH:/tmp/cnv/BIT:/tmp/cnv/BIT/samples:./" >> ~/.bashrc 
 RUN echo "export _JAVA_OPTIONS=-XX:-UseSplitVerifier"  >> ~/.bashrc
 
+# create directory
+RUN mkdir -p /tmp/cnv/BIT/examples/output
+
 # compile java files
 WORKDIR /tmp/cnv/BIT/examples
 RUN javac *.java
