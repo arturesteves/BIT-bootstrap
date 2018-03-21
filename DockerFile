@@ -32,6 +32,7 @@ RUN /bin/bash -c "source /tmp/cnv/BIT/./java-config.sh"
 # create env. variables
 RUN echo "export home=/usr/src/my-app" >> ~/.bashrc
 RUN echo "export CLASSPATH=$CLASSPATH:/tmp/cnv/BIT:/tmp/cnv/BIT/samples:./" >> ~/.bashrc 
+RUN echo "export _JAVA_OPTIONS=-XX:-UseSplitVerifier"  >> ~/.bashrc
 
 # compile java files
 WORKDIR /tmp/cnv/BIT/examples
