@@ -11,7 +11,7 @@ $ docker build -t bit github.com/arturesteves/bit-bootstrap && docker run --priv
 ```
 Just to run the container
 ```
-docker run --privileged --rm -it -v "$(pwd):/usr/src/my-app" bit bash
+$ docker run --privileged --rm -it -v "$(pwd):/usr/src/my-app" bit bash
 ```
 
 
@@ -20,21 +20,21 @@ docker run --privileged --rm -it -v "$(pwd):/usr/src/my-app" bit bash
 
 Move to the directory that contain some implementations of bit tools
 ```
-cd /tmp/cnv/BIT/samples
+$ cd /tmp/cnv/BIT/samples
 ```
 Run a bit tool, for example the ICount, and output the result to a directory.
 ```
-java ICount /tmp/cnv/BIT/examples /tmp/cnv/BIT/examples/output
+$ java ICount /tmp/cnv/BIT/examples /tmp/cnv/BIT/examples/output
 ```
 Attention that each bit tool receives a different arguments, but they tend to follow as specified above:
 ##### java [Bit tool class] [class or directory to analyze or instrument] [directory to place intrumented classes]
 Move to the directory where the instrumented code is
 ```
-cd /tmp/cnv/BIT/examples/output
+$ cd /tmp/cnv/BIT/examples/output
 ```
 Execute instrumented code of class Hello
 ```
-java Hello
+$ java Hello
 ```
 
 
@@ -42,11 +42,11 @@ java Hello
 
 Get the signature of a class and its methods and the attibutes.
 ```
-javap Hello
+$ javap Hello
 ```
 Get the java byte code of a class and output the result to a file.
 ```
-javap -c Hello > helloByteCode.txt
+$ javap -c Hello > helloByteCode.txt
 ```
   
  
