@@ -63,6 +63,12 @@ $ javap -c Hello > helloByteCode.txt
 1. Create a directory dedicated to the tool 
 2. Copy the BIT directory (which contains the directories highBIT and lowBIT) to the directory created 
 3. Create the java class(es) 
-4. Compile java class 
-5. Execute instrumentation code (tool created, with the java command)
-6. Execute the output of the instrumentation code (with the java command)
+4. Install Java version 7 (Java 1.7) **required**
+5. Setup java and javac classpaths to Java version 7
+6. Disable stackmaps for easier instrumentation
+```
+$ export _JAVA_OPTIONS="-XX:-UseSplitVerifier "$_JAVA_OPTIONS
+```
+7. Compile java class 
+8. Execute instrumentation code (tool created, with the java command)
+9. Execute the output of the instrumentation code (with the java command)
